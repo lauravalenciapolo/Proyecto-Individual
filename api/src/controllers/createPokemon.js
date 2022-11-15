@@ -1,7 +1,7 @@
 const {Pokemon, Type} = require ("../db")
 
 const createPokemon = async (name, life, attack, defense, speed, height, weight, img, types) =>{
-        if (!name) throw new Error ("Ingresa el nombre de tu nuevo Pokemon");
+        if (!name) throw new Error ("Insert the pokemon´s name please");
         const newPokemon = await Pokemon.create({
             name,
             life,

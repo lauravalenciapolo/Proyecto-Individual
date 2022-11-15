@@ -1,0 +1,91 @@
+.flex{
+    background-image: -webkit-linear-gradient(top, #ffffff, #fffb1c);
+    background-image: -moz-linear-gradient(top, #ffffff, #fffb1c);
+    background-image: -ms-linear-gradient(top, #ffffff, #fffb1c);
+    background-image: -o-linear-gradient(top, #ffffff, #fffb1c);
+    background-image: linear-gradient(to bottom, #ffffff, #fffb1c);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pokemondetail {
+    background-image: url("https://2.bp.blogspot.com/-Whj_IgwT1PY/V7V490y4DCI/AAAAAAAHTGQ/i26zbhtht8kN1E6OZ5is7Qe3134G3plZACLcB/s1600/kit-fiesta-pokemon-go-para-imprimir-gratis-002.jpg");
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    background-position: 25% 15%;
+    padding: 20px ;
+    border: solid black 1px;
+    width: 700px;
+    height: 500px;
+    border-radius: 10px;
+    margin: 2rem;
+    float:center;
+    box-shadow: rgba(7, 7, 7, 0.322) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(64, 10, 10, 0.35) 0px -2px 6px 0px inset;   
+    border-radius: 20px;     
+}
+
+.pokemondetail h1 {
+    font-size: 1.5em;
+    margin: 0 0 .3em;
+    color: #fcfcfc; 
+    text-transform: uppercase; 
+    font-size: 30px;
+    text-shadow: 0 8px 9px #c4b59d, 0px -2px 1px #fff;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.pokemondetail img{
+    padding-top: 2%;
+    width: 300px;
+    height: 300px;
+    /* padding-left: 200px; */
+}
+
+.info {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    padding: 0;
+    padding-top: 30px;
+    padding-left:50px;
+    padding-right: 50px;
+    margin-bottom: 0%;
+    font-family:monospace;
+    font-size: 20px;
+    color: rgb(14, 13, 13);
+
+}
+
+.back{
+        background-image: -webkit-linear-gradient(top, #ffda07, #ffffff);
+        background-image: -moz-linear-gradient(top,#ffda07, #ffffff);
+        background-image: -ms-linear-gradient(top,#ffda07, #ffffff);
+        background-image: -o-linear-gradient(top,#ffda07, #ffffff);
+        background-image: linear-gradient(to bottom,#ffda07, #ffffff);
+        -webkit-border-radius: 28;
+        -moz-border-radius: 28;
+        border-radius: 28px;
+        font-family: monospace;
+        color: black;
+        font-size: 13px;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-decoration: none;
+        margin-block: 10px;
+        border: 1px solid black;
+    }
+.back:hover {
+        background: #2079b0;
+        background-image: -webkit-linear-gradient(top, #ffffff, #f38a00);
+        background-image: -moz-linear-gradient(top, #ffffff, #f38a00);
+        background-image: -ms-linear-gradient(top, #ffffff, #f38a00);
+        background-image: -o-linear-gradient(top, #ffffff, #f38a00);
+        background-image: linear-gradient(to bottom, #ffffff, #f38a00);
+        text-decoration: none;
+        cursor: pointer;
+      }

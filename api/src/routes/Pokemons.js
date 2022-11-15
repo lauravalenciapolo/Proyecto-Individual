@@ -2,6 +2,7 @@ const allPokemons = require('../controllers/allPokemons');
 const createPokemon = require('../controllers/createPokemon');
 const pokemonId = require('../controllers/pokemonId');
 
+
 const router = require('express').Router();
 
 router.get("/", async(req, res)=>{
@@ -24,7 +25,7 @@ router.get("/", async(req, res)=>{
         }
 
     } catch (error) {
-        return res.status(400).send("Error de carga. Intentalo más tarde")
+        return res.status(400).send(error.message)
     }
  
 });
@@ -44,7 +45,7 @@ router.post("/", async (req,res)=>{
     try {
         const {name, life, attack, defense, speed, height, weight, img, types} = req.body
         const newPokemon = await createPokemon(name, life, attack, defense, speed, height, weight, img, types)
-        res.status(201).send(newPokemon);
+        res.status(200).send(newPokemon);
     } catch (error) {
         return res.status(400).send(error.message)
     }

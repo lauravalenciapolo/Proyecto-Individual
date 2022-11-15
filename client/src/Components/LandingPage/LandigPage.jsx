@@ -1,14 +1,19 @@
 import React from "react";
 // import image from "../../public/image/wp7789989.jpg";
 import { Link } from "react-router-dom";
+import styles from "./LandingPage.module.css"
+
 
 export default function LandingPage (){
     return (
-        <div>
-            <img src="https://external-preview.redd.it/NXrR_qnMRHrwUoE8pbeiX26fq4mNctFsmdEghRVApSQ.jpg?auto=webp&s=b18e1b0df84f417036d4e1ac0affb6245a071ebf" alt="Pokemons" />
+        <div className={styles.position}>
+            <div style={{display:'flex', flexFlow:'column'}}>
             <Link to="/home">
-            <button>GO!</button>
-            </Link>
+                <img src="image/pokemon2.png" alt="Pokemon" width={"850px"}/>
+            </Link>                
+            </div>
+            
         </div>
+        
     )
 }

@@ -4,33 +4,39 @@ import { connect } from "react-redux";
 import {getDetailsPokemon} from "../../Redux/actions";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import styles from "./DetailsPokemon.module.css"
 
 
 export function DetailsPokemon (props){
   
     const params = useParams()
-    console.log (params)
+    //console.log (props)
     useEffect (()=>{
         props.getDetailsPokemon(params.id)},[])
    
     return (
-        <div>
+        <div className={styles.flex}>
             <div>
                 <Link to={"/home"}>
-                    <button>Back</button>
+                    <button className={styles.back}>Back</button>
                 </Link>
+            </div >
+            <div className={styles.pokemondetail}>
+            <h1>{props.detailpokemon.name}</h1>
+           <img src={props.detailpokemon.img}alt="" />
+           <div className={styles.info}>
+            
+                <p><strong>Type</strong> <br /> {props.detailpokemon.types?.map(e=>(`${e.name} `))}</p>
+                <p><strong>Life</strong> {props.detailpokemon.life} </p>
+                <p><strong>Height</strong> {props.detailpokemon.height}</p>
+                <p><strong>Weight</strong> {props.detailpokemon.weight}</p>
+                <p><strong>Attack</strong> {props.detailpokemon.attack}</p>
+                <p><strong>Defense</strong> {props.detailpokemon.defense}</p>
+                <p><strong>Speed</strong> {props.detailpokemon.speed}</p>
+                
+           </div>
             </div>
             
-            <h1>id: {props.id}</h1>
-            <h1>Name: {props.detailpokemon.name}</h1>
-           <img src={props.detailpokemon.img}alt="" />
-           <p>Type: {props.detailpokemon.type}</p>
-           <p>Life: {props.detailpokemon.life} </p>
-           <p>Height: {props.detailpokemon.height}</p>
-           <p>Weight{props.detailpokemon.weight}</p>
-           <p>Attack: {props.detailpokemon.attack}</p>
-           <p>Defense: {props.detailpokemon.defense}</p>
-           <p>Speed: {props.detailpokemon.speed}</p>
         </div>
     )
 }

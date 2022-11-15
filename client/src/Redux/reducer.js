@@ -14,10 +14,8 @@ export default function reducer (state=initialState, action){
         case "GET_POKEMONS":
             return {
                 ...state,
-                allpokemons: action.payload.slice(0,12),
-                copiepokemon: action.payload //Hago una copia para poder filtrar sobre esta copia y devolver allpokemons para que se me renderice
-
-                // En el estado allpokemons guardar todo lo que envíe la action 
+                allpokemons: action.payload,
+                copiepokemon: action.payload 
             }
         case "GET_DETAILS_POKEMON":
             return {
@@ -43,7 +41,6 @@ export default function reducer (state=initialState, action){
             const copy= state.copiepokemon;
             const order = action.payload === "ascending"?
                 copy.sort(function(a,b){
-                // state.allpokemons.sort(function(a,b){
                     if(a.name < b.name) {
                         return -1
                     }
@@ -53,7 +50,6 @@ export default function reducer (state=initialState, action){
                     return 0;
                 }) :
                 copy.sort(function(a,b){
-                //state.allpokemons.sort(function(a,b){
                     if(a.name < b.name) {
                         return 1
                     }
@@ -63,6 +59,7 @@ export default function reducer (state=initialState, action){
                     return 0;
                 })
                 const changestate1 = state.change? false:true
+
             return {
                 ...state,
                 change:changestate1,
@@ -73,7 +70,6 @@ export default function reducer (state=initialState, action){
             const copy1 = state.copiepokemon
             const orderattack = action.payload === "ascendingAttack"?
                 copy1.sort(function(a,b){
-                //state.allpokemons.sort(function(a,b){
                     if(a.attack < b.attack) {
                         return -1
                     }
@@ -83,7 +79,6 @@ export default function reducer (state=initialState, action){
                     return 0;
                 }) :
                 copy1.sort(function(a,b){
-                //state.allpokemons.sort(function(a,b){
                     if(a.attack < b.attack) {
                         return 1
                     }
@@ -125,8 +120,25 @@ export default function reducer (state=initialState, action){
             const allpokemons = state.copiepokemon
             const arrpokemonstypes = [];
             allpokemons.forEach(poke =>{
-                console.log(poke)
-                console.log(poke.types)
+                //console.log(poke)
+                //console.log(poke.types)
+                poke.types.forEach(el=>{
+                    if (el.name === action.payload){
+                        arrpokemonstypes.push(poke)
+                    }
+                })
+            })
+            return {
+                ...state,
+                allpokemons: arrpokemonstypes
+            }
+        } 
+        case "FILTER_POKEMONS_TYPE2":{
+            const allpokemons = state.allpokemons
+            const arrpokemonstypes = [];
+            allpokemons.forEach(poke =>{
+                //console.log(poke)
+                //console.log(poke.types)
                 poke.types.forEach(el=>{
                     if (el.name === action.payload){
                         arrpokemonstypes.push(poke)
@@ -139,15 +151,6 @@ export default function reducer (state=initialState, action){
             }
         }
 
-        case "PAGINATION":{
-            const allpokemons2= state.copiepokemon
-            const page2 = action.payload*12
-            const array1=allpokemons2.slice((page2-12),page2)
-            return {
-                ...state,
-                allpokemons:array1
-            }}
-            
         default: 
         return {...state}
     }

@@ -1,34 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {sortPokemonsName, sortPokemonsAttack} from "../../Redux/actions"
+import styles from "./Order.module.css"
 
 export function Order (props){
 
     function handleOnChangeName (e){
         e.preventDefault();
         props.sortPokemonsName(e.target.value)
+        props.setActualPage(1)
     }
 
     function handleOnChangeAttack (e){
         e.preventDefault();
         props.sortPokemonsAttack(e.target.value)
+        props.setActualPage(1)
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <div>
-                <p>Sort name: </p>
+                <p>Sort name: 
                 <select onChange={(e)=> handleOnChangeName(e)}>
                     <option value="ascending" >A-Z </option>
                     <option value="descending">Z-A</option>
                 </select> 
+                </p>
             </div>
             <div>
-            <p>Sort attack: </p>
+            <p>Sort attack: 
             <select onChange={(e)=> handleOnChangeAttack(e)}>
-                <option value="ascendingAttack">0 - 100 </option>
-                <option value="descendingAttack">100 - 0</option>
+                <option value="ascendingAttack">- Attack </option>
+                <option value="descendingAttack">+ Attack</option>
             </select> 
+            </p>    
             </div>
 
         </div>

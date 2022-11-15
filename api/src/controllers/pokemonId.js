@@ -9,10 +9,10 @@ const pokemonId= async (id) => {
         const pokeid = await response.data
         const detailpokeapi = {
         id:pokeid.id,
-        img:pokeid.sprites.other.home.front_default,
+        img:pokeid.sprites.other.dream_world.front_default,
         name:pokeid.forms[0].name,
-        type: pokeid.types.map(poke => {
-            return poke.type.name
+        types: pokeid.types.map(poke => {
+            return {name: poke.type.name}
             }),
         life: pokeid.stats[0].base_stat,
         height: pokeid.height,

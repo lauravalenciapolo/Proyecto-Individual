@@ -1,31 +1,34 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import {connect} from "react-redux"
+import {connect, useStore} from "react-redux"
 import {pagination} from "../../Redux/actions"
+import styles from "./Pagination.module.css"
 
 export function Pagination (props){
 
+    //console.log(props,"PROPSSSS")
+
     const pokemonsPage= 12;
-    const numberPage = Math.ceil((props.copiepokemon.length)/pokemonsPage);
-    console.log(numberPage, "NUMERO DE PAGINAS")
-    const array =[];
+    const numberPage = Math.ceil((props.allpokemons.length)/pokemonsPage);
+    // console.log(numberPage, "NUMERO DE PAGINAS")
+    // const array =[];
 
-    for(let i=1; i<= numberPage; i++){
-        array.push(i)
-    }
-
-    function handleOnClick (e){
-        e.preventDefault()
-        props.pagination(Number(e.target.value))
-    }
+    // for(let i=1; i<= numberPage; i++){
+    //     array.push(i)
+    // }
 
     return (
-                <div>
-                    {array.map(el=>(
-                        <button onClick={(e)=>handleOnClick(e)} value={el}>{el}</button>
-                    ))}
-        
+                <div className={styles.pagination}>
+                    {/* <p>Page N° {props.actualPage}</p> */}
+                    <div className={styles.pagination1}>
+                    <button onClick={props.prev}>Prev</button>
+                    <button onClick={()=>props.paginado(props.actualPage)}>{props.actualPage}</button>
+                    {/* {array.map(el=>(
+                        <button onClick={()=>props.paginado(el)} value={el} >{el}</button>
+                    ))} */}
+                    <button onClick={props.next}>Next</button>
+                    </div>
                 </div>
             )
 
@@ -38,10 +41,4 @@ function mapStateToProps(state){
     }
 }
 
-function mapDispatchToProps (dispatch){
-    return {
-        pagination: (e)=>dispatch(pagination(e))
-    }
-}
-
-export default connect (mapStateToProps, mapDispatchToProps) (Pagination)
+export default connect (mapStateToProps, null) (Pagination)

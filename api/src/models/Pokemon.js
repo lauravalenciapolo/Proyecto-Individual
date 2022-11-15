@@ -17,48 +17,49 @@ module.exports = (sequelize) => {
 
     },
     life:{
-      type:DataTypes.INTEGER,
+      type:DataTypes.STRING,
       validate:{
         min: 0,
         max: 100,
       },
-      defaultValue: 10,
+      defaultValue: "10",
     },
     attack:{
-      type:DataTypes.INTEGER,
+      type:DataTypes.STRING,
       validate:{
         min: 0,
         max: 100,
       },
-      defaultValue: 10,
+      defaultValue: "10",
     },
     defense:{
-      type:DataTypes.INTEGER,
+      type:DataTypes.STRING,
       validate:{
         min: 0,
         max: 100,
       },
-      defaultValue: 10,
+      defaultValue: "10",
     },
     speed:{
-      type:DataTypes.INTEGER,
+      type:DataTypes.STRING,
       validate:{
         min: 0,
         max: 100,
       },
-      defaultValue: 10,
+      defaultValue: "10",
     },
     height:{
-      type:DataTypes.INTEGER,
-      defaultValue: 10,
+      type:DataTypes.STRING,
+      defaultValue: "10",
     },
     weight:{
-      type:DataTypes.INTEGER,
-      defaultValue: 10,
+      type:DataTypes.STRING,
+      defaultValue: "10",
     },
     img:{
-      type: DataTypes.STRING,
-      defaultValue: "https://wallpapercave.com/wp/tuWSYqf.jpg"
+      type: DataTypes.TEXT,
+      defaultValue: "https://cdn.atomix.vg/wp-content/uploads/2013/10/pokeball.png"
     }
   });
 };
+ 

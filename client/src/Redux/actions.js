@@ -16,30 +16,39 @@ export function getAllPokemons (){
 }
 
 export function getDetailsPokemon (id){
-    return async function (dispatch){
-        const result2 = await axios.get(`http://localhost:3001/pokemons/${id}`)
-        return dispatch({
-            type: "GET_DETAILS_POKEMON",
-            payload: result2.data
-        })
+    try {
+        return async function (dispatch){
+            const result2 = await axios.get(`http://localhost:3001/pokemons/${id}`)
+            return dispatch({
+                type: "GET_DETAILS_POKEMON",
+                payload: result2.data
+            })
+        }
+    } catch (error) {
+        throw new Error (error.message)
     }
+    
 }
 
 export function getTypes (){
-    return async function(dispatch){
-        const result3 = await axios.get("http://localhost:3001/types")
-        console.log(result3)
-        return dispatch({
-            type: "GET_TYPES",
-            payload: result3.data
-        })
-    }
-}
-
-export function postCreatePokemon (payload){ // lo que llega del front
     try {
         return async function(dispatch){
-            const result4 = await axios.post("http://localhost:3001/pokemons", payload) //asi llega por body 
+            const result3 = await axios.get("http://localhost:3001/types")
+            return dispatch({
+                type: "GET_TYPES",
+                payload: result3.data
+            })
+        }
+    } catch (error) {
+        throw new Error (error.message)
+    }
+   
+}
+
+export function postCreatePokemon (payload){ 
+    try {
+        return async function(dispatch){
+            const result4 = await axios.post("http://localhost:3001/pokemons",payload)
             return dispatch({
                 type: "POST_CREATE_POKEMONS",
                 payload: result4.data
@@ -49,7 +58,6 @@ export function postCreatePokemon (payload){ // lo que llega del front
         throw new Error ("Your pokemon was not create")
     }
 }
-//REVISAR ESTA ACCION DEL POST 
 
 export function getPokemonName (name){
     try {
@@ -69,21 +77,21 @@ export function getPokemonName (name){
 export function sortPokemonsName (order){
     return {
         type: "SORT_POKEMONS_NAME",
-        payload: order // ascending o descending
+        payload: order 
     }
 }
 
 export function sortPokemonsAttack (attack){
     return {
         type: "SORT_POKEMONS_ATTACK",
-        payload: attack // ascending o descending el ataque
+        payload: attack 
     }
 }
 
 export function filterPokemons (filter){
     return {
         type: "FILTER_POKEMONS",
-        payload: filter // All, Poke Api, Yours Pokemons 
+        payload: filter
     }
 }
 
@@ -94,9 +102,9 @@ export function filterPokemonsType (type){
     }
 }
 
-export function pagination (payload){
+export function filterPokemonsType2(type){
     return {
-        type: "PAGINATION",
-        payload:payload
+        type: "FILTER_POKEMONS_TYPE2",
+        payload: type
     }
 }
